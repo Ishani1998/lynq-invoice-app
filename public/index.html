@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LYNQ Invoice Studio</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <div>
+        <p class="eyebrow">LYNQ</p>
+        <h1>Invoice Studio</h1>
+        <p class="subhead">Create invoices, generate payment links, and send ethical, funny reminders in your clients' language.</p>
+      </div>
+      <div class="hero-card">
+        <h3>Quick Start</h3>
+        <ol>
+          <li>Save admin profile.</li>
+          <li>Add clients.</li>
+          <li>Create invoices.</li>
+          <li>Schedule reminders.</li>
+        </ol>
+        <button id="logout-btn" class="secondary" type="button">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="panel" id="login-panel">
+      <h2>Admin Login</h2>
+      <form id="login-form">
+        <div class="grid-2">
+          <label>Password
+            <input name="password" type="password" required />
+          </label>
+        </div>
+        <button type="submit">Login</button>
+      </form>
+      <div class="summary" id="login-summary">Use the admin password to access LYNQ Invoice Studio.</div>
+    </section>
+
+    <div id="app-sections">
+    <section class="panel" id="admin-panel">
+      <h2>Admin Setup</h2>
+      <form id="admin-form">
+        <div class="grid-2">
+          <label>Business Name
+            <input name="businessName" placeholder="LYNQ" required />
+          </label>
+          <label>Bank Account Name
+            <input name="bankAccountName" placeholder="Account name" />
+          </label>
+          <label>Bank Account Number
+            <input name="bankAccountNumber" placeholder="0000 0000 0000" />
+          </label>
+          <label>IFSC
+            <input name="ifsc" placeholder="IFSC code" />
+          </label>
+          <label>PAN
+            <input name="pan" placeholder="PAN" />
+          </label>
+          <label>Business Email
+            <input name="email" type="email" placeholder="admin@lynq.com" />
+          </label>
+          <label>Business Phone
+            <input name="phone" placeholder="+1 555 000 0000" />
+          </label>
+          <label>Business Address
+            <input name="address" placeholder="Address" />
+          </label>
+          <label>Admin Password
+            <input name="password" type="password" placeholder="Set or change password" />
+          </label>
+        </div>
+        <button type="submit">Save Admin</button>
+      </form>
+      <div class="summary" id="admin-summary"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Clients</h2>
+      <form id="client-form">
+        <div class="grid-2">
+          <label>Client Name
+            <input name="name" required />
+          </label>
+          <label>Email
+            <input name="email" type="email" />
+          </label>
+          <label>Phone
+            <input name="phone" />
+          </label>
+          <label>Language
+            <select name="language">
+              <option value="en">English</option>
+              <option value="es">Spanish</option>
+              <option value="fr">French</option>
+              <option value="hi">Hindi</option>
+            </select>
+          </label>
+        </div>
+        <button type="submit">Add Client</button>
+      </form>
+      <div id="clients-list" class="cards"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Create Invoice</h2>
+      <form id="invoice-form">
+        <div class="grid-2">
+          <label>Client
+            <select name="clientId" required></select>
+          </label>
+          <label>Invoice Number
+            <input name="number" placeholder="INV-1001" />
+          </label>
+          <label>Amount
+            <input name="amount" type="number" step="0.01" required />
+          </label>
+          <label>Currency
+            <input name="currency" placeholder="USD" value="USD" />
+          </label>
+          <label>Due Date
+            <input name="dueDate" type="date" />
+          </label>
+          <label>Description
+            <input name="description" placeholder="Design retainer" />
+          </label>
+        </div>
+        <button type="submit">Create Invoice</button>
+      </form>
+      <div id="invoices-list" class="cards"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Reminders</h2>
+      <form id="reminder-form">
+        <div class="grid-2">
+          <label>Invoice
+            <select name="invoiceId" required></select>
+          </label>
+          <label>Schedule At
+            <input name="scheduleAt" type="datetime-local" />
+          </label>
+          <label>Tone
+            <select name="tone">
+              <option value="ethical">Ethical</option>
+              <option value="gentle">Gentle</option>
+              <option value="funny">Funny</option>
+              <option value="firm">Firm</option>
+            </select>
+          </label>
+          <label>Language (optional override)
+            <select name="language">
+              <option value="">Client default</option>
+              <option value="en">English</option>
+              <option value="es">Spanish</option>
+              <option value="fr">French</option>
+              <option value="hi">Hindi</option>
+            </select>
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" name="channelSms" checked /> SMS
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" name="channelEmail" checked /> Email
+          </label>
+        </div>
+        <button type="submit">Schedule Reminder</button>
+      </form>
+      <button id="test-reminder-btn" class="secondary" type="button">Send Test Reminder Now</button>
+      <div id="reminders-list" class="cards"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Sent Messages (Mock)</h2>
+      <div id="messages-list" class="cards"></div>
+    </section>
+    </div>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>
