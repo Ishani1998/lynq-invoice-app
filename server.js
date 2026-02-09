@@ -35,6 +35,7 @@ function readDb() {
 }
 
 function writeDb(db) {
+  fs.mkdirSync(path.dirname(DB_PATH), { recursive: true });
   const tmp = DB_PATH + '.tmp';
   fs.writeFileSync(tmp, JSON.stringify(db, null, 2));
   fs.renameSync(tmp, DB_PATH);
